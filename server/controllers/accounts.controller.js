@@ -1,5 +1,7 @@
 const Account = require("../models").accounts;
 const { mongooseErrors } = require("../handlers/errorHandlers");
+const { Password } = require("../utils/Password");
+const { generate, decode } = require("../utils/Token");
 
 exports.getAccounts = async (req, res) => {
   let result = {
@@ -42,11 +44,7 @@ exports.createAccount = async (req, res, next) => {
   };
   const username = req.body.username;
   const password = req.body.password;
-  const filterAll = {
-    username: username,
-    password: password,
-  };
-  await Account.create(filterAll, (error, account) => {
+  await Account.create({ username: username, password: password }, (error) => {
     if (!error) {
       result = {
         ...result,
@@ -63,9 +61,11 @@ exports.createAccount = async (req, res, next) => {
       mongooseErrors(error, res, result);
     }
   });
+
   //?TODO: SET PASSWORD HASHED BEFORE SAVING
 };
 
+//login and get get data if logged in controllers
 exports.login = async (req, res) => {
   let result = {
     success: false,
@@ -77,37 +77,76 @@ exports.login = async (req, res) => {
   };
   const username = req.body.username;
   const password = req.body.password;
-
-  const filter = {
-    username: username,
-    password: password,
-  };
-  await Account.findOne({ filter }, (error, account) => {
-    if (!error) {
-      if (account) {
-        result = {
-          ...result,
-          success: true,
-          message: "Credentials are valid.",
-        };
-      } else {
-        result = {
-          ...result,
-          invalid: true,
-          message: "Invalid username or password.",
-        };
-      }
-      res.send(result);
+  const account = await Account.findOne({ username: username }).exec();
+  if (account) {
+    const dbPass = account.password;
+    const isMatch = await Password.compare(account.password, password);
+    if (isMatch) {
+      const tokenResult = generate(account.id, account.username);
+      result = {
+        ...result,
+        success: tokenResult.success,
+        error: tokenResult.error,
+        message: "Credentials are valid.",
+        token: tokenResult.token,
+      };
     } else {
       result = {
         ...result,
-        error: true,
-        message: "Encountered an error while logging in.",
+        invalid: true,
+        message: "Invalid username or password.",
       };
-      mongooseErrors(error, res, result);
     }
-  });
+  } else {
+    result = {
+      ...result,
+      invalid: true,
+      message: "Invalid username or password.",
+    };
+  }
+  res.send(result);
+};
+exports.getDataForLoggedIn = async (req, res) => {
+  let result = {
+    success: false,
+    failure: false,
+    invalid: false,
+    error: false,
+    message: "",
+    data: null,
+  };
+  //TODO FIX THIS THIS AFTER FIXING NVM NODE
+  const decodedResult = decode(req);
+  if (decodedResult.success) {
+    const id = decodedResult.id;
+    const username = decodedResult.username;
+    console.log("> token decoded");
+    //sample data to be passed
+    console.log("> account fetching");
+    const account = await Account.findById(id).exec();
+    console.log(account);
+    if (account) {
+      console.log("> account fetched successful");
+      result = {
+        ...result,
+        success: true,
+        message: "Fetched the data needed for logged-in account.",
+        data: account,
+      };
+    } else {
+      result = {
+        ...result,
+        failure: false,
+        message: "Cannot find the account.",
+      };
+    }
+  } else {
+    result = {
+      ...result,
+      error: true,
+      message: decodedResult.message,
+    };
+  }
 
-  //TODO: compare hashed password, see salt hash sha256
-  //TODO: GENERATE TOKEN THEN respond if login successsful
+  res.send(result);
 };

@@ -8,8 +8,6 @@ const main = async () => {
     .connect(ATLAS_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
     })
     .then(() => {
       console.log("connected");

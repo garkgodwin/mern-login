@@ -42,30 +42,27 @@ exports.createAccount = async (req, res, next) => {
   };
   const username = req.body.username;
   const password = req.body.password;
-
-  await Account.create(
-    {
-      username: username,
-      password: password,
-    },
-    (error, account) => {
-      if (!error) {
-        result = {
-          ...result,
-          success: true,
-          message: "Successfully created an account.",
-        };
-        res.send(result);
-      } else {
-        result = {
-          ...result,
-          error: true,
-          message: "Encountered an error while creating an account.",
-        };
-        mongooseErrors(error, res, result);
-      }
+  const filterAll = {
+    username: username,
+    password: password,
+  };
+  await Account.create(filterAll, (error, account) => {
+    if (!error) {
+      result = {
+        ...result,
+        success: true,
+        message: "Successfully created an account.",
+      };
+      res.send(result);
+    } else {
+      result = {
+        ...result,
+        error: true,
+        message: "Encountered an error while creating an account.",
+      };
+      mongooseErrors(error, res, result);
     }
-  );
+  });
   //?TODO: SET PASSWORD HASHED BEFORE SAVING
 };
 

@@ -5,7 +5,12 @@ const main = async () => {
   //?database
   const db = require("./models");
   await db.mongoose
-    .connect(ATLAS_URI, { useUnifiedTopology: true, useNewUrlParser: true })
+    .connect(ATLAS_URI, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    })
     .then(() => {
       console.log("connected");
       //?routes

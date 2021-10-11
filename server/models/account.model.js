@@ -5,6 +5,7 @@ module.exports = (mongoose) => {
       {
         username: {
           type: String,
+          unique: true,
           lowerCase: "Every character must be on lower case.",
           required: "Username is required!",
           minLength: [5, "The minimum character length is 5"],

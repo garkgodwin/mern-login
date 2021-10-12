@@ -1,0 +1,35 @@
+.LoginPage{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    padding: 24px;
+}
+
+.box{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+}
+
+.box-right{
+    width: 50%;
+    color: black;
+    padding: 24px;
+    height: 400px;
+}
+.box-right h2{
+    font-size: 88px;
+    color: rgb(255, 255, 255);
+    mix-blend-mode:screen;
+    outline: none;
+    text-shadow: 4px 4px 8px rgb(0, 162, 255);
+    pointer-events: none;
+}
+
+.box-right h2::selection { background: transparent; }
+.box-right h2::-moz-selection { background: transparent; }

@@ -118,28 +118,32 @@ exports.getDataForLoggedIn = async (req, res) => {
   //TODO FIX THIS THIS AFTER FIXING NVM NODE
   const decodedResult = decode(req);
   if (decodedResult.success) {
-    const id = decodedResult.id;
-    const username = decodedResult.username;
-    console.log("> token decoded");
-    //sample data to be passed
-    console.log("> account fetching");
-    const account = await Account.findById(id).exec();
-    console.log(account);
-    if (account) {
-      console.log("> account fetched successful");
-      result = {
-        ...result,
-        success: true,
-        message: "Fetched the data needed for logged-in account.",
-        data: account,
-      };
-    } else {
-      result = {
-        ...result,
-        failure: false,
-        message: "Cannot find the account.",
-      };
-    }
+    const id = decodedResult.decoded.id;
+    const username = decodedResult.decoded.username;
+    await Account.findOne({ id: id, username: username })
+      .then((account) => {
+        if (account) {
+          result = {
+            ...result,
+            success: true,
+            message: "Fetched the data needed for logged-in account.",
+            data: account,
+          };
+        } else {
+          result = {
+            ...result,
+            failure: false,
+            message: "Cannot find the account.",
+          };
+        }
+      })
+      .catch((error) => {
+        result = {
+          ...result,
+          error: true,
+          message: error.message,
+        };
+      });
   } else {
     result = {
       ...result,
@@ -147,6 +151,5 @@ exports.getDataForLoggedIn = async (req, res) => {
       message: decodedResult.message,
     };
   }
-
   res.send(result);
 };

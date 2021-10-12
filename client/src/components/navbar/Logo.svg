@@ -1,0 +1,16 @@
+<svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40">
+<circle cx="20" cy="20" r="20" fill="#64C8FF"/>
+</mask>
+<g mask="url(#mask0)">
+<path d="M38 20C38 25.0711 35.912 31.7008 32.4607 37.0592C28.9599 42.4946 24.4838 46 20 46C15.5162 46 11.0401 42.4946 7.53928 37.0592C4.08804 31.7008 2 25.0711 2 20C2 10.0589 10.0589 2 20 2C29.9411 2 38 10.0589 38 20Z" stroke="#00FFE0" stroke-width="4"/>
+<rect x="24" y="18" width="12" height="4" fill="#00FFE0"/>
+</g>
+<mask id="mask1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="14" y="14" width="40" height="40">
+<circle cx="34" cy="34" r="20" fill="#64C8FF"/>
+</mask>
+<g mask="url(#mask1)">
+<path d="M52 34C52 43.9411 43.9411 52 34 52C24.0589 52 16 43.9411 16 34C16 28.9289 18.088 22.2992 21.5393 16.9408C25.0401 11.5054 29.5162 8 34 8C38.4838 8 42.9599 11.5054 46.4607 16.9408C49.912 22.2992 52 28.9289 52 34Z" stroke="#00FFE0" stroke-width="4"/>
+<rect x="38" y="32" width="12" height="4" fill="#00FFE0"/>
+</g>
+</svg>

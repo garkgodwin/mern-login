@@ -1,0 +1,32 @@
+.Button{
+    width: auto;
+    height: auto;
+    border: 0;
+    outline: none;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 4px;
+}
+
+.btn-primary{
+    background-color: rgb(4, 1, 29);
+    color: aqua;
+}
+
+.btn-secondary{
+    background-color: rgb(2, 34, 104);
+    color: rgb(255, 255, 255);
+}
+
+.btn-large{
+    font-size: 24px;
+}
+
+.btn-medium{
+    font-size: 20px;
+}
+
+.btn-small{
+    font-size: 16px;
+}

@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 //?STYLES
 import "./InputS.css";
 
-const InputS = ({ cName, type, placeholder }) => {
+const InputS = ({ cName, type, placeholder, id, value, handleChange }) => {
   return (
-    <input
-      className={"Input-single " + cName}
-      type={type}
-      placeholder={placeholder}
-    />
+    <div className={"Input-single " + cName}>
+      <label className="is-label" htmlFor={id}>
+        {placeholder}
+      </label>
+      <input
+        autoComplete="off"
+        className="is-input"
+        type={type}
+        id={id}
+        value={value}
+        onChange={handleChange}
+      />
+    </div>
   );
 };
 

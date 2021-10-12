@@ -18,12 +18,14 @@ const Login = ({ setIsLogged, isLogged }) => {
       <Text cName="txt-primary txt-xxl" text="Login" />
       <div className="form-box">
         <InputS
-          cName="input-primary input-m"
+          id="lf-username"
+          cName="is-primary input-m"
           type="text"
           placeholder="Username"
         />
         <InputS
-          cName="input-secondary input-m"
+          id="lf-password"
+          cName="is-primary input-m"
           type="password"
           placeholder="Password"
         />

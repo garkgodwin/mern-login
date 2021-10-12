@@ -4,59 +4,70 @@
     outline: none;
     border: 0;
     margin: 4px;
-    padding: 8px;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: all 0.4s ease-in-out;
     overflow: visible;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: var(--trans-white)
 }
 .Input-single * {
-    transition: all 0.4s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    border-radius: 8px;
 }
-.Input-single::placeholder{
-    position: absolute;
-    transition: all 0.6s ease-in-out;
-    left: 8px;
-    display: block !important;
-}
-.Input-single:focus::placeholder{
-    display: inline !important;
-    left: 25%;
-}
-.Input-single:focus:empty::placeholder{
-    left: 55%
-}
+/* 
 
-.input-primary{
     background-color: white;
     color: rgb(4, 1, 29);
-    border-bottom: 1px solid rgb(4, 1, 29);
-}
-.input-primary::placeholder{
-    color: rgb(4, 1, 29);
-}
-
-
-.input-secondary{
-    background-color: rgb(4, 1, 29);;
-    color: white;
-    border-bottom: 1px solid white;
-}
-.input-secondary::placeholder{
-    color: white;
+    */
+.is-label{
+    text-align: center;
+    padding: 8px;
+    width: 30%;
 }
 
-.input-s{
+.is-input{
+    width: 69%;
+    border: none;
+    outline: none;
+    user-select: none;
+    padding: 8px;
+}
+
+.is-primary *{
+    background-color: var(--color-5);
+    color: var(--color-3);
+}
+
+.is-primary:hover .is-input{
+    background-color: var(--color-1);
+    width: 70%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.is-primary:hover .is-label{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input-s *{
     font-size: 16px;
+    height: 32px;
 }
-.input-m{
+.input-m *{
     font-size: 20px;
+    height: 40px;
 }
-.input-l{
+.input-l *{
     font-size: 24px;
+    height: 48px;
 }
-.input-xl{
+.input-xl *{
     font-size: 28px;
+    height: 56px;
 }
-.input-xxl{
+.input-xxl *{
     font-size: 32px;
+    height: 64px;
 }

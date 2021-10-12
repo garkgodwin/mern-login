@@ -10,13 +10,13 @@
 }
 
 .btn-primary{
-    background-color: rgb(4, 1, 29);
-    color: aqua;
+    background-color: var(--color-1);
+    color: var(--color-2);
 }
 
 .btn-secondary{
-    background-color: rgb(2, 34, 104);
-    color: rgb(255, 255, 255);
+    background-color: var(--color-5);
+    color: var(--color-3);
 }
 
 .btn-large{

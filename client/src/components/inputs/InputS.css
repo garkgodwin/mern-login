@@ -23,22 +23,18 @@
     border-bottom-left-radius: 0;
     width: 70%;
     background-color: var(--color-1);
+    color: var(--color-2)
 }
  .is-input:focus + .is-label{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    color: var(--color-2)
 }
-/* 
-
-    background-color: white;
-    color: rgb(4, 1, 29);
-    */
 .is-label{
     text-align: center;
     padding: 8px;
     width: 30%;
 }
-
 .is-input{
     width: 69%;
     border: none;
@@ -46,21 +42,21 @@
     user-select: none;
     padding: 8px;
 }
-
 .is-primary *{
     background-color: var(--color-5);
     color: var(--color-3);
 }
-
 .is-primary:hover .is-input{
     background-color: var(--color-1);
     width: 70%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    color: var(--color-2)
 }
 .is-primary:hover .is-label{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    color: var(--color-2)
 }
 .input-s *{
     font-size: 16px;

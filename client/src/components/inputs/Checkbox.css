@@ -1,0 +1,62 @@
+.Checkbox{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    color: var(--color-3);
+    background-color: var(--color-5);
+    padding: 4px;
+    border-radius: 8px;
+    transition: all 0.4s ease-in-out;
+    align-self: end;
+    cursor: pointer;
+    user-select: none
+}
+.Checkbox:hover{
+    background-color: var(--color-1);
+    color: var(--color-2)
+}
+.Checkbox *{
+    cursor: pointer;
+    user-select: none
+}
+.cb-label{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items:center;
+    padding-right: 4px;
+}
+
+.cb-input{
+    background-color: var(--color-1);
+    outline: none;
+    display: none;
+}
+
+.cb-input::after{
+    background-color:var(--color-1)
+}
+
+.Checkbox.input-s{
+    width: 120px;
+}
+.Checkbox.input-m{
+    width: 140px;
+}
+.Checkbox.input-l{
+    width: 180px;
+}
+.input-s .cb-label{
+    font-size: 20px;
+}
+
+.input-m .cb-label{
+    font-size: 24px;
+}
+
+.input-l .cb-label{
+    font-size: 28px;
+}

@@ -12,7 +12,7 @@ const InputS = ({ cName, type, placeholder, id, value, handleChange }) => {
         type={type}
         id={id}
         value={value}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e.target.value)}
       />
       <label className="is-label" htmlFor={id}>
         {placeholder}

@@ -8,6 +8,7 @@
     transition: all 0.4s ease-in-out;
     overflow: visible;
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     position: relative;
@@ -16,6 +17,16 @@
 .Input-single * {
     transition: all 0.1s ease-in-out;
     border-radius: 8px;
+}
+.is-input:focus{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 70%;
+    background-color: var(--color-1);
+}
+ .is-input:focus + .is-label{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 /* 
 

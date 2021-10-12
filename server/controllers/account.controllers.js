@@ -2,7 +2,12 @@ const Account = require("../models").accounts;
 const { mongooseErrors } = require("../handlers/errorHandlers");
 const { Password } = require("../utils/Password");
 const { generate, decode } = require("../utils/Token");
-
+/*
+? commented code blocks:
+ * 1. get all accounts
+ * 2. create account
+*/
+/*
 exports.getAccounts = async (req, res) => {
   let result = {
     success: false,
@@ -32,7 +37,8 @@ exports.getAccounts = async (req, res) => {
       mongooseErrors(error, res, result);
     });
 };
-
+*/
+/*
 exports.createAccount = async (req, res, next) => {
   let result = {
     success: false,
@@ -62,8 +68,8 @@ exports.createAccount = async (req, res, next) => {
     }
   });
 
-  //?TODO: SET PASSWORD HASHED BEFORE SAVING
 };
+*/
 
 //login and get get data if logged in controllers
 exports.login = async (req, res) => {

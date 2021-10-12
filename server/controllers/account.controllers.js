@@ -115,7 +115,6 @@ exports.getDataForLoggedIn = async (req, res) => {
     message: "",
     data: null,
   };
-  //TODO FIX THIS THIS AFTER FIXING NVM NODE
   const decodedResult = decode(req);
   if (decodedResult.success) {
     const id = decodedResult.decoded.id;

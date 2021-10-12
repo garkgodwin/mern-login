@@ -1,6 +1,6 @@
 module.exports = (app) => {
   var router = require("express").Router();
-  const accountController = require("../controllers/accounts.controller");
+  const accountController = require("../controllers/account.controllers");
 
   router.get("/", accountController.getAccounts);
   router.get("/logged-in", accountController.getDataForLoggedIn);

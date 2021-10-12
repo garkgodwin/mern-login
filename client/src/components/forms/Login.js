@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 
+//?SERVICES
+import AccountDataService from "../../services/account.service";
+import Token from "../../services/token/Token";
+
 //?STYLES
 import "./Login.css";
+
+//?SWEETALERT2
+import Swal from "sweetalert2";
 
 //?COMPONENTS
 import Button from "../buttons/Button";
@@ -9,7 +16,7 @@ import Text from "../texts/Text";
 import InputS from "../inputs/InputS";
 import Checkbox from "../inputs/Checkbox";
 
-const Login = ({ setIsLogged, isLogged }) => {
+const Login = ({ setLoading, getLoggedInAccount }) => {
   const [isShown, setIsShown] = useState(false);
   const [values, setValues] = useState({
     username: "",
@@ -18,7 +25,47 @@ const Login = ({ setIsLogged, isLogged }) => {
   //TODO: CHECKBOX FIX
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+    setLoading({
+      isLoading: true,
+      message: "Logging in...",
+    });
+    AccountDataService.login(values)
+      .then((response) => {
+        const data = response.data;
+        if (data) {
+          if (data.success) {
+            Token.set(data.token);
+            getLoggedInAccount();
+            Swal.fire("Success", "Login successful!!!", "success");
+          } else if (data.invalid) {
+            Swal.fire("Invalid", "Invalid credentials", "invalid");
+            setLoading({
+              isLoading: false,
+              message: "",
+            });
+          } else {
+            Swal.fire("Failure", "Failed to login.", "info");
+            setLoading({
+              isLoading: false,
+              message: "",
+            });
+          }
+        } else {
+          //failed
+          Swal.fire("Failure", "Server did not send any data", "info");
+          setLoading({
+            isLoading: false,
+            message: "",
+          });
+        }
+      })
+      .catch((error) => {
+        Swal.fire("Error", "Encountered an error while logging in.", "error");
+        setLoading({
+          isLoading: false,
+          message: "",
+        });
+      });
   };
 
   const handleShow = (checked) => {

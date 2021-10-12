@@ -1,9 +1,14 @@
 import React from "react";
 
-export default function HomePage() {
+//?STYLES
+import "./HomePage.css";
+
+const HomePage = () => {
   return (
     <div className="Page page-home">
-      <h3>AUTHED: Home Page</h3>
+      <h3>AUTHED PAGE</h3>
     </div>
   );
-}
+};
+
+export default HomePage;

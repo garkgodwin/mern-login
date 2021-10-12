@@ -106,7 +106,7 @@ exports.login = async (req, res) => {
   }
   res.send(result);
 };
-exports.getDataForLoggedIn = async (req, res) => {
+exports.getLoggedInAccount = async (req, res) => {
   let result = {
     success: false,
     failure: false,

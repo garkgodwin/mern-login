@@ -23,11 +23,23 @@ code {
     monospace;
 }
 
+html{
+  overflow-y: scroll !important;
+}
+
 html, body, #root{
   width: 100%;
   height: auto;
+  margin: 0;
+  padding: 0 !important;
 }
-
+body{
+  background: linear-gradient(107.56deg, #00030F 30.22%, rgba(19, 225, 200, 0) 30.3%, #000C38 71.05%, #00FFE0 71.49%);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 *{
   margin: 0;
   padding: 0;

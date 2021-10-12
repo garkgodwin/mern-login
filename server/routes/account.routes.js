@@ -3,7 +3,7 @@ module.exports = (app) => {
   const accountController = require("../controllers/account.controllers");
 
   router.get("/", accountController.getAccounts);
-  router.get("/logged-in", accountController.getDataForLoggedIn);
+  router.get("/logged-in", accountController.getLoggedInAccount);
   router.post("/", accountController.createAccount);
   router.post("/login", accountController.login);
   app.use("/api/accounts", router);

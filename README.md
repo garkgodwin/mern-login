@@ -1,4 +1,4 @@
-# MERN-stack -> LOGIN
+# MERN | LOGIN SYSTEM
 >A login system using mern-stack  and few technologies.
 
 ## Functions
